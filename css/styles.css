@@ -196,9 +196,9 @@ html, body {
 }
 .table-header {
   display: grid;
-  grid-template-columns: 70px 40px 50px 50px 50px 50px 50px 50px; /* Сумма = 360px */
+  grid-template-columns: 70px 40px 50px 60px 60px 50px 60px; /* Сумма = 360px на ПК */
+  padding: 8px 2px; /* Уменьшено расстояние */
   background: #333;
-  padding: 8px 4px;
   font-size: 10px;
   font-family: 'AntonSC';
   text-align: center;
@@ -223,9 +223,9 @@ html, body {
 }
 .table-row {
   display: grid;
-  grid-template-columns: 70px 40px 50px 50px 50px 50px 50px 50px;
+  grid-template-columns: 70px 40px 50px 60px 60px 50px 60px;
   background: rgba(255, 255, 255, 0.05);
-  padding: 8px 4px;
+  padding: 8px 2px; /* Уменьшено расстояние */
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   font-size: 9px;
   font-family: 'AntonSC';
@@ -265,16 +265,16 @@ html, body {
 }
 .actions {
   display: flex;
-  gap: 4px;
+  gap: 2px; /* Уменьшено расстояние между кнопками */
   justify-content: center;
 }
 .info-btn {
-  background: #555;
+  background: #1e90ff; /* Синий цвет для кнопки i */
   border: none;
   border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  font-size: 9px;
+  width: 16px;
+  height: 16px;
+  font-size: 8px;
   color: #fff;
   cursor: pointer;
 }
@@ -282,7 +282,7 @@ html, body {
   background: #1eff00;
   border: none;
   border-radius: 20px;
-  padding: 6px 8px;
+  padding: 6px 10px; /* Увеличено для лучшей читаемости */
   font-size: 8px;
   font-family: 'AntonSC';
   color: #fff;
@@ -317,5 +317,31 @@ html, body {
     top: 50%;
     transform: translateY(-50%);
     position: relative;
+  }
+  .table-header, .table-row {
+    grid-template-columns: 70px 40px 50px 60px 60px 50px 60px; /* Фиксированная ширина для ПК */
+  }
+}
+
+@media (max-width: 360px) {
+  .table-header, .table-row {
+    grid-template-columns: 20% 10% 15% 15% 15% 15% 20%; /* Процентное распределение для мобильных */
+  }
+  .wallet-left, .wallet-right {
+    font-size: 14px;
+    padding: 6px 16px;
+  }
+  .create-match-btn {
+    padding: 10px 30px;
+    font-size: 16px;
+  }
+  .info-btn {
+    width: 14px;
+    height: 14px;
+    font-size: 7px;
+  }
+  .accept-btn {
+    padding: 5px 8px;
+    font-size: 7px;
   }
 }

@@ -48,7 +48,6 @@
         const isMobile = /Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent);
 
         if (isMobile) {
-          // На мобильных: видео и контейнер занимают весь экран
           container.style.width = '100%';
           container.style.height = '100%';
           container.style.maxHeight = '100vh';
@@ -57,9 +56,8 @@
           container.style.transform = 'none';
           video.style.width = '100%';
           video.style.height = '100%';
-          video.style.objectFit = 'cover'; // Растягиваем видео на весь экран
+          video.style.objectFit = 'cover';
         } else {
-          // На ПК: фиксированный 360x640px
           container.style.width = '360px';
           container.style.height = '640px';
           container.style.margin = '0 auto';

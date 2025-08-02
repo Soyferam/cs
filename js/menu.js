@@ -23,19 +23,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Принудительное масштабирование для 9:16
+  // Принудительное масштабирование
   function enforceAspectRatio() {
     const container = document.querySelector('.app-container');
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
-    const targetAspect = 9 / 16;
     const isMobile = /Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent);
 
     if (isMobile) {
       container.style.width = '100%';
-      container.style.height = `${windowWidth / targetAspect}px`;
+      container.style.height = '100%';
       container.style.maxHeight = '100vh';
-      container.style.margin = '0 auto';
+      container.style.margin = '0';
+      container.style.top = '0';
+      container.style.transform = 'none';
     } else {
       container.style.width = '360px';
       container.style.height = '640px';
