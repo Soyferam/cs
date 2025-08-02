@@ -29,18 +29,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
     const targetAspect = 9 / 16;
-    const windowAspect = windowWidth / windowHeight;
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent);
 
-    if (windowAspect > targetAspect) {
-      container.style.width = `${windowHeight * targetAspect}px`;
-      container.style.height = `${windowHeight}px`;
-    } else {
-      container.style.width = `${windowWidth}px`;
+    if (isMobile) {
+      container.style.width = '100%';
       container.style.height = `${windowWidth / targetAspect}px`;
+      container.style.maxHeight = '100vh';
+      container.style.margin = '0 auto';
+    } else {
+      container.style.width = '360px';
+      container.style.height = '640px';
+      container.style.margin = '0 auto';
+      container.style.position = 'relative';
+      container.style.top = '50%';
+      container.style.transform = 'translateY(-50%)';
     }
-    container.style.margin = '0 auto';
-    container.style.top = '50%';
-    container.style.transform = 'translateY(-50%)';
   }
 
   enforceAspectRatio();
