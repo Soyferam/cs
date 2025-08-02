@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Loading...</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="preload" href="./assets/loading-video.mp4" as="video">
+  <link rel="stylesheet" href="./css/styles.css">
+  <style>
+    @font-face {
+      font-family: 'AntonSC';
+      src: url('./fonts/AntonSC-Regular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'Press Start 2P';
+      src: url('./fonts/PressStart2P-Regular.ttf') format('truetype');
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #1a1a1a;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .app-container {
+      width: 100vw;
+      height: 100vh;
+      max-width: 360px;
+      max-height: 640px;
+      margin: 0 auto;
+      aspect-ratio: 9/16;
+      position: relative;
+      overflow: hidden;
+      background: #1a1a1a;
+    }
+    .loading-screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      transition: opacity 0.5s ease;
+    }
+    #loading-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+    .progress-bar {
+      position: relative;
+      width: 80%;
+      max-width: 340px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      z-index: 2;
+      margin-bottom: 20px;
+    }
+    .progress {
+      width: 0;
+      height: 100%;
+      background: #1eff00;
+      border-radius: 5px;
+      transition: width 5s linear;
+    }
+    .loading-content {
+      text-align: center;
+      color: #fff;
+      font-family: 'AntonSC', sans-serif;
+      font-size: 24px;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <div style="font-family: 'AntonSC', 'Press Start 2P'; position: absolute; visibility: hidden;">Preload fonts</div>
+  <div class="app-container">
+    <div id="loading-screen" class="loading-screen">
+      <video autoplay muted playsinline id="loading-video">
+        <source src="./assets/loading-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="loading-content">
+        <div class="progress-bar">
+          <div class="progress"></div>
+        </div>
+        <p>Loading your adventure...</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const video = document.getElementById('loading-video');
+      const progress = document.querySelector('.progress');
+      const loadingScreen = document.getElementById('loading-screen');
+
+      const tg = window.Telegram?.WebApp;
+      if (tg) {
+        tg.ready();
+        tg.expand();
+        tg.requestFullscreen?.();
+        console.log('Telegram Web App initialized');
+      }
+
+      function enforceAspectRatio() {
+        const container = document.querySelector('.app-container');
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        const targetAspect = 9 / 16;
+        const windowAspect = windowWidth / windowHeight;
+
+        if (windowAspect > targetAspect) {
+          container.style.width = `${windowHeight * targetAspect}px`;
+          container.style.height = `${windowHeight}px`;
+        } else {
+          container.style.width = `${windowWidth}px`;
+          container.style.height = `${windowWidth / targetAspect}px`;
+        }
+        container.style.margin = '0 auto';
+        container.style.top = '50%';
+        container.style.transform = 'translateY(-50%)';
+      }
+
+      enforceAspectRatio();
+      window.addEventListener('resize', enforceAspectRatio);
+
+      progress.style.width = '100%';
+
+      video.addEventListener('ended', () => {
+        loadingScreen.style.opacity = '0';
+        setTimeout(() => {
+          window.location.href = 'menu.html';
+        }, 500);
+      });
+
+      video.addEventListener('error', () => {
+        console.error('Video failed to load');
+        loadingScreen.style.opacity = '0';
+        setTimeout(() => {
+          window.location.href = 'menu.html';
+        }, 500);
+      });
+    });
+  </script>
+</body>
+</html>

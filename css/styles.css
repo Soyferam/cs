@@ -1,0 +1,315 @@
+/* === 📦 Локальные шрифты === */
+@font-face {
+  font-family: 'AntonSC';
+  src: url('../fonts/AntonSC-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Press Start 2P';
+  src: url('../fonts/PressStart2P-Regular.ttf') format('truetype');
+}
+
+/* === 🌌 Общий фон === */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #0d0d0d; /* Темный геймерский фон */
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* === 📱 Контейнер приложения с соотношением 9:16 === */
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  max-width: 360px;
+  max-height: 640px;
+  margin: 0 auto;
+  aspect-ratio: 9/16;
+  position: relative;
+  overflow: hidden;
+  background: #0d0d0d;
+  background-image: linear-gradient(135deg, rgba(0, 20, 40, 0.8), rgba(0, 0, 0, 1));
+  background-size: cover;
+  background-position: center;
+}
+
+/* === ✨ Фон-свечение === */
+.background-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 34, 85, 0.3), rgba(0, 0, 0, 0.9));
+  z-index: 0;
+}
+
+/* === 📱 Обёртка === */
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-family: 'AntonSC', sans-serif;
+  color: #fff;
+}
+
+/* === 💳 Баланс и кошелёк === */
+.wallet-left, .wallet-right {
+  position: absolute;
+  top: 7.5%; /* 48px / 640px, как в старом проекте */
+  z-index: 10;
+}
+.wallet-left {
+  left: 5%; /* 18px / 360px */
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-family: 'AntonSC';
+  cursor: pointer;
+}
+.wallet-left img {
+  width: 20px;
+  margin-right: 8px;
+  user-select: none;
+}
+.wallet-right {
+  right: 4%; /* 14.4px / 360px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wallet-right #ton-connect button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-family: 'AntonSC';
+  color: #fff !important;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === 🔍 Поле поиска === */
+.search-bar {
+  position: absolute;
+  top: 15%; /* 96px / 640px */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 360px;
+  background: rgba(50, 50, 50, 0.8);
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  box-sizing: border-box;
+}
+.search-bar img {
+  width: 20px;
+  height: 20px;
+  margin: 0 10px;
+}
+.search-bar input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #aaa;
+  font-family: 'Press Start 2P';
+  font-size: 12px;
+  flex: 1;
+}
+
+/* === ▶️ Кнопка Create Match === */
+.create-match-btn {
+  position: absolute;
+  top: 22.5%; /* 144px / 640px */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e90ff; /* Яркий синий */
+  border: none;
+  border-radius: 20px;
+  padding: 12px 40px;
+  font-size: 18px;
+  font-family: 'AntonSC';
+  color: #fff;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* === 📋 Таблица матчей === */
+.match-table {
+  position: absolute;
+  top: 30%; /* 192px / 640px */
+  left: 0;
+  width: 100%;
+  max-width: 360px;
+  z-index: 10;
+}
+.table-header {
+  display: grid;
+  grid-template-columns: 70px 40px 50px 50px 50px 50px 50px 50px; /* Оптимизировано для 360px */
+  background: #333;
+  padding: 8px 4px;
+  border-radius: 10px 10px 0 0;
+  font-size: 10px;
+  font-family: 'AntonSC';
+  text-align: center;
+  box-sizing: border-box;
+}
+.table-body {
+  max-height: 55%; /* 352px / 640px */
+  overflow-y: auto;
+  overflow-x: hidden; /* Убираем горизонтальную прокрутку */
+  scrollbar-width: thin;
+  scrollbar-color: #1eff00 #333;
+}
+.table-body::-webkit-scrollbar {
+  width: 6px;
+}
+.table-body::-webkit-scrollbar-thumb {
+  background: #1eff00;
+  border-radius: 3px;
+}
+.table-body::-webkit-scrollbar-track {
+  background: #333;
+}
+.table-row {
+  display: grid;
+  grid-template-columns: 70px 40px 50px 50px 50px 50px 50px 50px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 9px;
+  font-family: 'AntonSC';
+  text-align: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+.player-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-bottom: 4px;
+}
+.online-status {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(4px);
+  width: 8px;
+  height: 8px;
+  background: #1eff00;
+  border-radius: 50%;
+}
+.nickname {
+  font-size: 8px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 66px;
+}
+.actions {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+.info-btn {
+  background: #555;
+  border: none;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 9px;
+  color: #fff;
+  cursor: pointer;
+}
+.accept-btn {
+  background: #1eff00;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 8px;
+  font-size: 8px;
+  font-family: 'AntonSC';
+  color: #fff;
+  cursor: pointer;
+}
+
+/* === 🧭 Навигация === */
+.nav-bar {
+  position: absolute;
+  bottom: 2.5%; /* 16px / 640px */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  gap: 20px;
+  z-index: 10;
+}
+.nav-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+/* === Адаптивность для 9:16 === */
+@media (max-width: 360px) {
+  .app-container {
+    width: 100%;
+    height: 100%;
+  }
+  .wallet-left, .wallet-right {
+    font-size: 14px;
+    padding: 6px 16px;
+  }
+  .search-bar {
+    width: 100%;
+  }
+  .create-match-btn {
+    padding: 10px 30px;
+    font-size: 16px;
+  }
+  .match-table {
+    width: 100%;
+  }
+  .table-header, .table-row {
+    font-size: 9px;
+    grid-template-columns: 70px 40px 50px 50px 50px 50px 50px 50px;
+  }
+  .info-btn {
+    width: 16px;
+    height: 16px;
+    font-size: 8px;
+  }
+  .accept-btn {
+    padding: 5px 7px;
+    font-size: 7px;
+  }
+}
+
+@media (min-width: 361px) and (min-height: 641px) {
+  .app-container {
+    width: 360px;
+    height: 640px;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative;
+  }
+}

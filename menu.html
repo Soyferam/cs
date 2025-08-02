@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Game Menu</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+  <script src="https://telegram.org/js/telegram-web-app.js" defer></script>
+  <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js" defer></script>
+  <script src="./js/menu.js" defer></script>
+</head>
+<body>
+  <div class="app-container">
+    <div class="wrapper">
+      <div class="background-glow"></div>
+
+      <!-- 💳 Баланс -->
+      <div class="wallet-left">
+        <img src="./img/logo.png" alt="TON" />
+        111.11
+      </div>
+
+      <!-- 💼 Кошелёк -->
+      <div class="wallet-right">
+        <div id="ton-connect"></div>
+      </div>
+
+      <!-- 🔍 Поле поиска -->
+      <div class="search-bar">
+        <img src="./img/search-icon.png" alt="Search" class="search-icon" />
+        <input type="text" placeholder="Enter match or friends code" />
+      </div>
+
+      <!-- ▶️ Кнопка Create Match -->
+      <button class="create-match-btn">Create match</button>
+
+      <!-- 📋 Таблица матчей -->
+      <div class="match-table">
+        <div class="table-header">
+          <span>Player</span>
+          <span>ELO</span>
+          <span>Crypto</span>
+          <span>Lobby</span>
+          <span>Map</span>
+          <span>Weapon</span>
+          <span>Mode</span>
+          <span></span>
+        </div>
+        <div class="table-body">
+          <!-- Матч 1 -->
+          <div class="table-row">
+            <div class="player-cell">
+              <img src="./img/avatar1.png" alt="Player" class="avatar" />
+              <span class="online-status"></span>
+              <span class="nickname">ShadowK1ng</span>
+            </div>
+            <span>1520</span>
+            <span>0.5 TON</span>
+            <span>Public</span>
+            <span>aim_dust2</span>
+            <span>AK-47</span>
+            <span>1v1</span>
+            <div class="actions">
+              <button class="info-btn">i</button>
+              <button class="accept-btn">ACCEPT</button>
+            </div>
+          </div>
+          <!-- Матч 2 -->
+          <div class="table-row">
+            <div class="player-cell">
+              <img src="./img/avatar2.png" alt="Player" class="avatar" />
+              <span class="online-status"></span>
+              <span class="nickname">BlazeRiser</span>
+            </div>
+            <span>1480</span>
+            <span>0.3 TON</span>
+            <span>Public</span>
+            <span>de_inferno</span>
+            <span>M4A1</span>
+            <span>1v1</span>
+            <div class="actions">
+              <button class="info-btn">i</button>
+              <button class="accept-btn">ACCEPT</button>
+            </div>
+          </div>
+          <!-- Матч 3 -->
+          <div class="table-row">
+            <div class="player-cell">
+              <img src="./img/avatar3.png" alt="Player" class="avatar" />
+              <span class="online-status"></span>
+              <span class="nickname">NeonSlayer</span>
+            </div>
+            <span>1600</span>
+            <span>0.7 TON</span>
+            <span>Public</span>
+            <span>aim_map</span>
+            <span>AWP</span>
+            <span>1v1</span>
+            <div class="actions">
+              <button class="info-btn">i</button>
+              <button class="accept-btn">ACCEPT</button>
+            </div>
+          </div>
+          <!-- Матч 4 -->
+          <div class="table-row">
+            <div class="player-cell">
+              <img src="./img/avatar4.png" alt="Player" class="avatar" />
+              <span class="online-status"></span>
+              <span class="nickname">GhostRider</span>
+            </div>
+            <span>1450</span>
+            <span>0.4 TON</span>
+            <span>Public</span>
+            <span>de_mirage</span>
+            <span>P90</span>
+            <span>1v1</span>
+            <div class="actions">
+              <button class="info-btn">i</button>
+              <button class="accept-btn">ACCEPT</button>
+            </div>
+          </div>
+          <!-- Матч 5 -->
+          <div class="table-row">
+            <div class="player-cell">
+              <img src="./img/avatar5.png" alt="Player" class="avatar" />
+              <span class="online-status"></span>
+              <span class="nickname">StormChaser</span>
+            </div>
+            <span>1550</span>
+            <span>0.6 TON</span>
+            <span>Public</span>
+            <span>cs_office</span>
+            <span>MP5</span>
+            <span>1v1</span>
+            <div class="actions">
+              <button class="info-btn">i</button>
+              <button class="accept-btn">ACCEPT</button>
+            </div>
+          </div>
+          <!-- Матч 6 -->
+          <div class="table-row">
+            <div class="player-cell">
+              <img src="./img/avatar6.png" alt="Player" class="avatar" />
+              <span class="online-status"></span>
+              <span class="nickname">ViperX</span>
+            </div>
+            <span>1500</span>
+            <span>0.2 TON</span>
+            <span>Public</span>
+            <span>de_cache</span>
+            <span>Galil</span>
+            <span>1v1</span>
+            <div class="actions">
+              <button class="info-btn">i</button>
+              <button class="accept-btn">ACCEPT</button>
+            </div>
+          </div>
+          <!-- Матч 7 -->
+          <div class="table-row">
+            <div class="player-cell">
+              <img src="./img/avatar7.png" alt="Player" class="avatar" />
+              <span class="online-status"></span>
+              <span class="nickname">IceWolf</span>
+            </div>
+            <span>1620</span>
+            <span>0.8 TON</span>
+            <span>Public</span>
+            <span>aim_course</span>
+            <span>UMP-45</span>
+            <span>1v1</span>
+            <div class="actions">
+              <button class="info-btn">i</button>
+              <button class="accept-btn">ACCEPT</button>
+            </div>
+          </div>
+          <!-- Матч 8 -->
+          <div class="table-row">
+            <div class="player-cell">
+              <img src="./img/avatar8.png" alt="Player" class="avatar" />
+              <span class="online-status"></span>
+              <span class="nickname">ThunderBolt</span>
+            </div>
+            <span>1470</span>
+            <span>0.3 TON</span>
+            <span>Public</span>
+            <span>de_nuke</span>
+            <span>SCAR-20</span>
+            <span>1v1</span>
+            <div class="actions">
+              <button class="info-btn">i</button>
+              <button class="accept-btn">ACCEPT</button>
+            </div>
+          </div>
+          <!-- Матч 9 -->
+          <div class="table-row">
+            <div class="player-cell">
+              <img src="./img/avatar9.png" alt="Player" class="avatar" />
+              <span class="online-status"></span>
+              <span class="nickname">DarkSniper</span>
+            </div>
+            <span>1580</span>
+            <span>0.5 TON</span>
+            <span>Public</span>
+            <span>de_train</span>
+            <span>FAMAS</span>
+            <span>1v1</span>
+            <div class="actions">
+              <button class="info-btn">i</button>
+              <button class="accept-btn">ACCEPT</button>
+            </div>
+          </div>
+          <!-- Матч 10 -->
+          <div class="table-row">
+            <div class="player-cell">
+              <img src="./img/avatar10.png" alt="Player" class="avatar" />
+              <span class="online-status"></span>
+              <span class="nickname">PhantomKiller</span>
+            </div>
+            <span>1490</span>
+            <span>0.4 TON</span>
+            <span>Public</span>
+            <span>aim_redline</span>
+            <span>Desert Eagle</span>
+            <span>1v1</span>
+            <div class="actions">
+              <button class="info-btn">i</button>
+              <button class="accept-btn">ACCEPT</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🧭 Навигация -->
+      <div class="nav-bar">
+        <img src="./img/home-icon.png" alt="Home" class="nav-icon" />
+        <img src="./img/friends-icon.png" alt="Friends" class="nav-icon" />
+        <img src="./img/coin-icon.png" alt="Coin" class="nav-icon" />
+      </div>
+    </div>
+  </div>
+</body>
+</html>
